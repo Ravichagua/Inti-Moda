@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{app.title}">Language Switcher App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            text-align: center;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+        }
+        .language-links {
+            margin-top: 20px;
+        }
+        .language-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .language-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <a th:href="@{/about}">jajajajaja</a>
+
+    <p th:text="#{language}">Language</p>
+
+    <div class="language-links">
+        <a th:href="@{/index(lang='en')}" th:text="#{english}">English</a> |
+        <a th:href="@{/index(lang='es')}" th:text="#{spanish}">Español</a>
+    </div>
+
+    
+    
+</body>
+</html>

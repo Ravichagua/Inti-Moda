@@ -1,0 +1,10 @@
+.contenedorCards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    gap: 20px; 
+}
+
+.body-r{
+    background-color: lightslategray;
+}

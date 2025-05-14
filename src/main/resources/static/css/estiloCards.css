@@ -1,0 +1,29 @@
+body {
+    background-color: #f8f9fa;
+}
+.card {
+    margin-bottom: 20px; /* Espacio entre las tarjetas */
+}
+.card-img-top {
+    height: 200px; /* Altura fija para las imágenes */
+    object-fit: cover; /* Mantiene la proporción de la imagen */
+}
+.card-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #28a745; /* Color verde para el precio */
+}
+h2 {
+    margin-bottom: 30px; /* Espacio debajo del título */
+}
+.btn-secondary {
+    background-color: #6c757d; /* Color gris para los botones */
+    border: none; /* Sin borde */
+}
+.btn-secondary:hover {
+    background-color: #5a6268; /* Color más oscuro al pasar el mouse */
+}
+.form-control {
+    text-align: center; /* Centrar el texto en el input */
+    width: 60px; /* Ancho fijo para el input */
+}

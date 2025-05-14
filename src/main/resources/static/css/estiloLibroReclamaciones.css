@@ -1,0 +1,48 @@
+.libro-reclamaciones-header {
+    background-color: #f8f9fa;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #dee2e6;
+  }
+
+  .libro-reclamaciones-form {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .form-section {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-section:last-child {
+    border-bottom: none;
+  }
+
+  .section-title {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-inti {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: white;
+  }
+
+  .btn-inti:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+    color: white;
+  }
+
+  .required-field::after {
+    content: "*";
+    color: red;
+    margin-left: 4px;
+  }

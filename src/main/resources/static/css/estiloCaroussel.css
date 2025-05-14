@@ -1,0 +1,11 @@
+.carousel-img {
+    height: 500px;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .carousel-inner{
+    
+    text-align: center;
+  }
+
