@@ -63,17 +63,14 @@ public class IntiController {
     
     @GetMapping("/lang")
     public String cambiarIdioma(@RequestParam String lang, HttpServletRequest request, HttpServletResponse response) {
-
     LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
     if (localeResolver != null) {
         localeResolver.setLocale(request, response, new Locale(lang));
     }
-
     String referer = request.getHeader("Referer");
     if (referer != null) {
         return "redirect:" + referer;
     }
-
     return "redirect:/";
     }
 }

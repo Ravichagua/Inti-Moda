@@ -1,175 +1,310 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title th:text="#{page.title}">Libro de Reclamaciones</title>
-  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
-  <link th:href="@{/css/estilosFooter.css}" rel="stylesheet" />
-  <link th:href="@{/css/estiloCaroussel.css}" rel="stylesheet" />
-  <link th:href="@{/css/estiloCards.css}" rel="stylesheet" />
-  <link th:href="@{/css/estiloLibroReclamaciones.css}" rel="stylesheet" />
-  <link th:href="@{/css/bootstrap-icons.css}" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libro de Reclamaciones</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+            crossorigin="anonymous"></script>
+
+
+
+
 </head>
+
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top shadow-sm">
     <div class="container-fluid">
-      <a class="navbar-brand" th:href="@{/}">
-        <img th:src="@{/img/inti_logo.svg}" width="30" height="30" alt="Logo" />
-        <span th:text="#{nav.brand}">Inti Moda</span>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" th:href="@{/}" th:text="#{nav.home}">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link" th:href="@{/catalogo}" th:text="#{nav.catalog}">Catálogo</a></li>
-          <li class="nav-item"><a class="nav-link" th:href="@{/imagenes}" th:text="#{nav.images}">Imágenes</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" th:text="#{nav.more}">Más</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" th:href="@{/accion1}" th:text="#{nav.action1}">Action</a></li>
-              <li><a class="dropdown-item" th:href="@{/accion2}" th:text="#{nav.action2}">Another action</a></li>
+        <a class="navbar-brand" th:href="@{/inicio}">
+            <img src="/img/inti_logo.svg" th:src="@{/img/inti_logo.svg}" alt="Logo" width="30" height="30"
+                 class="d-inline-block align-text-top">
+            <span th:text="#{navbar.brand}">Inti Moda</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/inicio}"
+                       th:text="#{navbar.home}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" th:text="#{navbar.catalog}">Catalog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" th:text="#{navbar.images}">Images</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false" th:text="#{navbar.idioma}">Dropdown</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" th:href="@{/lang(lang='es')}" th:text="#{spanish}">Spanish</a></li>
+                        <li><a class="dropdown-item" th:href="@{/lang(lang='en')}" th:text="#{english}">English
+                            action</a></li>
+                    </ul>
+                </li>
             </ul>
-          </li>
-        </ul>
-        <form class="d-flex" th:action="@{/search}" method="get">
-          <input class="form-control me-2" type="search" name="q" th:placeholder="#{navbar.searchPlaceholder}" />
-          <button class="btn btn-outline-success" type="submit" th:text="#{navbar.search}">Buscar</button>
-          <a class="btn btn-outline-success ms-2" th:href="@{/registro}" th:text="#{nav.account}">Cuenta</a>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="" aria-label="Search"
+                       th:placeholder="#{navbar.searchPlaceholder}">
+                <button class="btn btn-outline-success me-2" type="submit" th:text="#{navbar.search}">Search</button>
+
+                <a class="btn btn-outline-success me-2" th:href="@{/inicioSesion}"
+                   th:text="#{navbar.login}">Ingresar</a>
+                <a class="btn btn-outline-success me-2" th:href="@{/registro}"
+                   th:text="#{navbar.register}">Registrate</a>
+                <a class="btn btn-outline-primary position-relative" th:href="@{/carrito}" th:text="#{navbar.cart}">
+
+                    <i class="bi bi-cart"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            1
+                    </span>
+                </a>
+            </form>
+        </div>
+    </div>
+</nav>
+<!--Navbar (igual que en la página principal)-->
+<!-- Cabecera del Libro de Reclamaciones -->
+<div class=" border bg-light mb-5">
+        <div class="container py-4">
+            <div class="row align-items-center p-2">
+                <div class="col-md-8">
+                    <h1 th:text="#{book.header}">Libro de Reclamaciones</h1>
+                    <p class="lead" th:text="#{book.disclaimer}">Conforme a lo establecido en el Código de Protección y
+                        Defensa del Consumidor - Ley N°
+                        29571</p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <img src="https://promart.vteximg.com.br/arquivos/icon-libro-reclamaciones.png"
+                         alt="Libro de Reclamaciones" width="120">
+                </div>
+            </div>
+        </div>
+</div>
+
+<!-- Formulario de Reclamaciones -->
+<div class="container ">
+    <div class="p-5 mb-5 shadow rounded-3">
+        <form id="reclamacionForm">
+
+            <!-- Sección 1: Datos del Establecimiento -->
+            <div class="form-section">
+                <h3 class="section-title" th:text="#{book.provider}">1. Identificación del Proveedor</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p th:utext="#{book.providerCompany}"><strong>Razón Social:</strong> Inti Moda S.A.C.</p>
+
+                        <strong>RUC:</strong> 20501057682
+                    </div>
+                    <div class="col-md-6">
+                        <p th:utext="#{book.providerAdress}"><strong>Dirección:</strong> Av. La Marina 2000, San Miguel, Lima</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="bg-dark my-4 border-1 border-top opacity-50">
+            <!-- Sección 2: Datos del Consumidor -->
+            <div class="form-section">
+                <h3 class="section-title" th:text="#{book.consumer}">2. Identificación del Consumidor</h3>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="nombres" class="form-label required-field" th:text="#{book.name}">Nombres</label>
+                        <input type="text" class="form-control" id="nombres" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="apellidos" class="form-label required-field" th:text="#{book.lastname}">Apellidos</label>
+                        <input type="text" class="form-control" id="apellidos" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="documento" class="form-label" th:text="#{book.documentType}">Tipo de Documento</label>
+                        <select class="form-select" id="documento">
+                            <option value="dni" th:text="#{book.id}">DNI</option>
+                            <option value="ce" th:text="#{book.foreingCard}">Carné de Extranjería</option>
+                            <option value="pasaporte" th:text="#{book.passport}">Pasaporte</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="numDocumento" class="form-label required-field" th:text="#{book.idNumber}">Número de Documento</label>
+                        <input type="text" class="form-control" id="numDocumento" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="telefono" class="form-label required-field" th:text="#{book.phone}">Teléfono</label>
+                        <input type="tel" class="form-control" id="telefono" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="email" class="form-label required-field" th:text="#{book.email}">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="col-12">
+                        <label for="direccion" class="form-label required-field" th:text="#{book.adress}">Dirección</label>
+                        <input type="text" class="form-control" id="direccion" required>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="bg-dark mt-5 border-1 border-top opacity-50">
+            <!-- Sección 3: Detalles de la Reclamación -->
+            <div class="form-section">
+                <h3 class="section-title" th:text="#{book.details}">3. Detalle de la Reclamación</h3>
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label class="form-label required-field" th:text="#{book.typeComplain}">Tipo</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="tipoReclamo" id="reclamo" value="reclamo"
+                                   checked>
+                            <label class="form-check-label" for="reclamo" th:utext="#{book.complainOption1}">
+                            placeholder
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="tipoReclamo" id="queja" value="queja">
+                            <label class="form-check-label" for="queja" th:utext="#{book.complainOption2}">
+
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="pedido" class="form-label" th:text="#{book.numberBill}">N° de Pedido/Factura (Opcional)</label>
+                        <input type="text" class="form-control" id="pedido">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="fechaCompra" class="form-label" th:text="#{book.datePurchase}">Fecha de Compra (Opcional)</label>
+                        <input type="date" class="form-control" id="fechaCompra">
+                    </div>
+
+                    <div class="col-12">
+                        <label for="productoServicio" class="form-label required-field" th:text="#{book.product}">Producto/Servicio
+                            Reclamado</label>
+                        <input type="text" class="form-control" id="productoServicio" required>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="descripcion" class="form-label required-field" th:text="#{book.description}">Descripción</label>
+                        <textarea class="form-control" id="descripcion" rows="5" required
+                                  placeholder="Describa con detalle el motivo de su reclamo o queja"
+                                  th:placeholder="#{book.descPlaceholder}"></textarea>
+
+                    </div>
+                </div>
+            </div>
+
+            <hr class="bg-dark mt-5 border-1 border-top opacity-50">
+            <!-- Sección 4: Acciones/Pedido del Consumidor -->
+            <div class="form-section">
+                <h3 class="section-title" th:text="#{book.order}">4. Pedido del Consumidor</h3>
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label for="pedidoConsumidor" class="form-label required-field" th:text="#{book.questionAction}">¿Qué acción desea que
+                            realicemos?</label>
+                        <textarea class="form-control" id="pedidoConsumidor" rows="5" required
+                                  placeholder="Por ejemplo: Cambio de producto, devolución del dinero, etc."
+                                  th:placeholder="#{book.actionPlaceholder}"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="bg-dark mt-5 border-1 border-top opacity-50">
+            <!-- Botones del Formulario -->
+
+            <div class="mt-4 d-flex justify-content-between">
+                <button type="button" class="btn btn-secondary" onclick="window.history.back()" th:text="#{book.cancel}">Cancelar</button>
+                <button type="submit" class="btn btn-inti" th:text="#{book.sendComplain}">Enviar Reclamación</button>
+            </div>
+
+            <div class="mt-3">
+                <p class="text-muted small" th:text="#{book.disclaimer1}">* Los campos marcados son obligatorios.</p>
+                <p class="text-muted small" th:text="#{book.disclaimer2}">Recibirá una copia de esta reclamación al correo electrónico proporcionado y
+                    una respuesta en un plazo máximo de 30 días calendario.</p>
+            </div>
         </form>
-      </div>
     </div>
-  </nav>
+</div>
 
-  <!-- Header -->
-  <div class="libro-reclamaciones-header">
+<!-- Footer -->
+<footer class="bg-dark text-light pt-5 mt-5">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-8">
-          <h1 th:text="#{page.header}">Libro de Reclamaciones</h1>
-          <p class="lead" th:text="#{page.subheader}">Conforme a lo establecido...</p>
-        </div>
-        <div class="col-md-4 text-md-end">
-          <img  width="120" alt="" />
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Form -->
-  <div class="container">
-    <div class="libro-reclamaciones-form">
-      <form id="reclamacionForm">
-
-        <!-- Sección 1 -->
-        <section>
-          <h3 th:text="#{form.provider.title}">1. Identificación del Proveedor</h3>
-          <div class="row">
-            <div class="col-md-6">
-              <p><strong th:text="#{form.provider.name}">Razón Social:</strong> Inti Moda S.A.C.</p>
-              <p><strong th:text="#{form.provider.ruc}">RUC:</strong> 20501057682</p>
+        <div class="row">
+            <div class="col-6 col-md-3 mb-2">
+                <img src="/img/inti_logo.svg" th:src="@{/img/inti_logo.svg}"
+                     alt="Inti Moda Logo" class="footer-logo w-25">
+                <ul class="list-unstyled list-inline">
+                    <li class="list-inline-item"><a th:href="@{/}" class="social-link text-decoration-none text-white"><i class="bi bi-facebook"></i></a></li>
+                    <li class="list-inline-item"><a th:href="@{/}" class="social-link text-decoration-none text-white"><i class="bi bi-instagram"></i></a>
+                    </li>
+                    <li class="list-inline-item"><a th:href="@{/}" class="social-link text-decoration-none text-white"><i class="bi bi-tiktok"></i></a></li>
+                    <li class="list-inline-item"><a th:href="@{/}" class="social-link text-decoration-none text-white"><i class="bi bi-whatsapp"></i></a></li>
+                </ul>
             </div>
-            <div class="col-md-6">
-              <p><strong th:text="#{form.provider.address}">Dirección:</strong>
-                 <span>Av. La Marina 2000...</span>
-              </p>
+            <div class="col-6 col-md-3 mb-2">
+                <h5 th:text="#{footer.products}">Products</h5>
+                <ul class="list-unstyled ">
+                    <li><a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.shoes}">Shoes</a></li>
+                    <li><a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.clothing}">Clothing</a></li>
+                    <li><a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.accessories}">Accessories</a></li>
+                    <li><a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.news}">News</a></li>
+                    <li><a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.outlet}">Outlet</a></li>
+                </ul>
             </div>
-          </div>
-        </section>
-
-        <!-- Sección 2 -->
-        <section>
-          <h3 th:text="#{form.consumer.title}">2. Identificación del Consumidor</h3>
-          <div class="row g-3">
-            <div class="col-md-6">
-              <label th:for="*{nombres}" class="form-label required-field" th:text="#{form.consumer.firstName}">Nombres</label>
-              <input type="text" class="form-control" th:field="*{nombres}" required />
+            <div class="col-6 col-md-3 mb-2">
+                <h5 th:text="#{footer.collections}">Collections</h5>
+                <ul class="list-unstyled">
+                    <li><a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.summer}">Summer 2025</a></li>
+                    <li><a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.trends}">Trends</a></li>
+                    <li><a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.casual}">Casual</a></li>
+                    <li><a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.elegant}">Elegant</a></li>
+                    <li><a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.exclusive}">Exclusive</a></li>
+                </ul>
             </div>
-            <!-- ...otros campos similarmente con th:field y mensajes... -->
-          </div>
-        </section>
-
-        <!-- Sección 3 y 4... -->
-
-        <div class="mt-4 d-flex justify-content-between">
-          <button type="button" class="btn btn-secondary" th:text="#{form.cancel}">Cancelar</button>
-          <button type="submit" class="btn btn-inti" th:text="#{form.submit}">Enviar Reclamación</button>
+            <div class="col-6 col-md-3 mb-2">
+                <h5 th:text="#{footer.customerService}">Customer Service</h5>
+                <p class="small text-secondary mb-3">RUC: 20501057682</p>
+                <ul class="footer-links list-unstyled">
+                    <li><a th:href="@{/}" class="text-decoration-none text-white"><i class="bi bi-telephone me-2"></i>912 345 678</a></li>
+                    <li><a th:href="@{/}" class="text-decoration-none text-white"><i
+                            class="bi bi-envelope me-2"></i>contacto @ intimoda. pe</a></li>
+                </ul>
+                <div>
+                    <a th:href="@{/libroReclamaciones}">
+                        <img class="lazy-load loaded w-50"
+                             data-src="https://promart.vteximg.com.br/arquivos/icon-libro-reclamaciones.png?v=637515291210330000"
+                             alt="Complaint Book"
+                             src="https://promart.vteximg.com.br/arquivos/icon-libro-reclamaciones.png?v=637515291210330000">
+                    </a>
+                </div>
+            </div>
         </div>
-
-      </form>
+        <hr>
+        <div class="row">
+            <div class="col-12">
+                <div class="d-sm-flex justify-content-center">
+                    <a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.privacyPolicy}">Política de Privacidad</a>
+                    <a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.terms}">Términos y Condiciones</a>
+                    <a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.privacyPolicy}">Cookies</a>
+                    <a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.faq}">Preguntas Frecuentes</a>
+                    <a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.shippingReturns}">Envíos y Devoluciones</a>
+                    <a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.contact}">Contacto</a>
+                </div>
+                <p class="copyright text-center mt-3 text-secondary" th:text="#{footer.copyright}">© 2025 Inti Moda Perú. Todos los derechos reservados.</p>
+            </div>
+        </div>
     </div>
-  </div>
-
-  <!-- Footer -->
-  <footer class="bg-dark text-light py-4">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 col-md-3 mb-2">
-          <img src="/img/inti_logo.svg" th:src="@{/img/inti_logo.svg}"
-               alt="Inti Moda Logo" class="footer-logo w-25">
-          <ul class="list-unstyled list-inline">
-            <li class="list-inline-item"><a href="#" class="social-link"><i class="bi bi-facebook"></i></a></li>
-            <li class="list-inline-item"><a href="#" class="social-link"><i class="bi bi-instagram"></i></a></li>
-            <li class="list-inline-item"><a href="#" class="social-link"><i class="bi bi-tiktok"></i></a></li>
-            <li class="list-inline-item"><a href="#" class="social-link"><i class="bi bi-whatsapp"></i></a></li>
-          </ul>
-        </div>
-        <div class="col-12 col-md-3 mb-2">
-          <h5 th:text="#{footer.products}">Products</h5>
-          <ul class="list-unstyled ">
-            <li><a href="#" th:text="#{footer.shoes}">Shoes</a></li>
-            <li><a href="#" th:text="#{footer.clothing}">Clothing</a></li>
-            <li><a href="#" th:text="#{footer.accessories}">Accessories</a></li>
-            <li><a href="#" th:text="#{footer.news}">News</a></li>
-            <li><a href="#" th:text="#{footer.outlet}">Outlet</a></li>
-          </ul>
-        </div>
-        <div class="col-12 col-md-3 mb-2">
-          <h5 th:text="#{footer.collections}">Collections</h5>
-          <ul class="list-unstyled">
-            <li><a href="#" th:text="#{footer.summer}">Summer 2025</a></li>
-            <li><a href="#" th:text="#{footer.trends}">Trends</a></li>
-            <li><a href="#" th:text="#{footer.casual}">Casual</a></li>
-            <li><a href="#" th:text="#{footer.elegant}">Elegant</a></li>
-            <li><a href="#" th:text="#{footer.exclusive}">Exclusive</a></li>
-          </ul>
-        </div>
-        <div class="col-12 col-md-3 mb-2">
-          <h5 th:text="#{footer.customerService}">Customer Service</h5>
-          <p class="small text-secondary mb-3">RUC: 20501057682</p>
-          <ul class="footer-links list-unstyled">
-            <li><a href="tel:+51912345678"><i class="bi bi-telephone me-2"></i>912 345 678</a></li>
-            <li><a href="mailto:contacto@intimoda.pe"><i class="bi bi-envelope me-2"></i>contacto@intimoda.pe</a></li>
-          </ul>
-          <div class="book-link">
-            <a href="libroReclamaciones.html">
-              <img class="lazy-load loaded"
-                   data-src="https://promart.vteximg.com.br/arquivos/icon-libro-reclamaciones.png?v=637515291210330000"
-                   alt="Complaint Book"
-                   src="https://promart.vteximg.com.br/arquivos/icon-libro-reclamaciones.png?v=637515291210330000">
-            </a>
-          </div>
-        </div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col-12 text-center">
-          <div>
-            <a href="#">Política de Privacidad</a>
-            <a href="#">Términos y Condiciones</a>
-            <a href="#">Cookies</a>
-            <a href="#">Preguntas Frecuentes</a>
-            <a href="#">Envíos y Devoluciones</a>
-            <a href="#">Contacto</a>
-          </div>
-          <p class="copyright">© 2025 Inti Moda Perú. Todos los derechos reservados.</p>
-        </div>
-      </div>
-    </div>
-  </footer>
+</footer>
 
 </body>
 </html>

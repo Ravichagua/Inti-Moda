@@ -23,7 +23,7 @@
 
 <body>
 <!--Navbar-->
-<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top shadow-sm">
+<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top shadow-sm">
     <div class="container-fluid">
         <a class="navbar-brand" th:href="@{/inicio}">
             <img src="/img/inti_logo.svg" th:src="@{/img/inti_logo.svg}" alt="Logo" width="30" height="30"
@@ -54,7 +54,8 @@
                        aria-expanded="false" th:text="#{navbar.idioma}">Dropdown</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" th:href="@{/lang(lang='es')}" th:text="#{spanish}">Spanish</a></li>
-                        <li><a class="dropdown-item" th:href="@{/lang(lang='en')}" th:text="#{english}">English action</a></li>
+                        <li><a class="dropdown-item" th:href="@{/lang(lang='en')}" th:text="#{english}">English
+                            action</a></li>
                     </ul>
                 </li>
             </ul>
@@ -112,27 +113,28 @@
 <!--CARS-->
 <div class="container mt-5">
     <h2 class="text-center mb-4" th:text="#{home.trending}">Modelos en Tendencia</h2>
-    <div class="row">
-        <div class="col-md-4">
+    <div class="row g-4 ">
+        <div class="col-sm-12 col-md-3 col-xxl-2">
             <div class="card">
                 <img src="https://topitop.vteximg.com.br/arquivos/ids/366547-500-624/1729236_1.jpg?v=638630744059470000"
                      class="card-img-top" alt="Camisa Casual">
                 <div class="card-body">
                     <h5 class="card-title" th:text="#{item.five}">Camisa Casual</h5>
-                    <p class="card-text" th:text="#{item.fiveDesc}">Camisa de algodón ligera, perfecta para el verano.</p>
+                    <p class="card-text text-truncate text-truncate" th:text="#{item.fiveDesc}">Camisa de algodón ligera, perfecta para el
+                        verano.</p>
                     <p class="card-price">$29.99</p>
                     <a href="#" class="btn btn-primary" th:text="#{home.AddToCart}">Agregar al Carrito</a>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-sm-12 col-md-3 col-xxl-2">
             <div class="card">
                 <img src="https://topitop.vteximg.com.br/arquivos/ids/378508-500-624/3085651_1.jpg?v=638764055394300000"
                      class="card-img-top" alt="Pantalones Jeans">
                 <div class="card-body">
                     <h5 class="card-title" th:text="#{item.four}">Camisa Casual</h5>
-                    <p class="card-text" th:text="#{item.fourDesc}">Pantalones jeans de corte clásico, cómodos y
+                    <p class="card-text text-truncate" th:text="#{item.fourDesc}">Pantalones jeans de corte clásico, cómodos y
                         duraderos.</p>
                     <p class="card-price">$49.99</p>
                     <a href="#" class="btn btn-primary" th:text="#{home.AddToCart}">Agregar al Carrito</a>
@@ -140,13 +142,13 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-sm-12 col-md-3 col-xxl-2">
             <div class="card">
                 <img src="https://topitop.vteximg.com.br/arquivos/ids/378508-500-624/3085651_1.jpg?v=638764055394300000"
                      class="card-img-top" alt="Chaqueta de Cuero">
                 <div class="card-body">
                     <h5 class="card-title" th:text="#{item.two}">Chaqueta de Cuero</h5>
-                    <p class="card-text" th:text="#{item.twoDesc}">Chaqueta de cuero auténtico, ideal para cualquier
+                    <p class="card-text text-truncate" th:text="#{item.twoDesc}">Chaqueta de cuero auténtico, ideal para cualquier
                         ocasión.</p>
                     <p class="card-price">$89.99</p>
                     <a href="#" class="btn btn-primary" th:text="#{home.AddToCart}">Agregar al Carrito</a>
@@ -154,13 +156,13 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-sm-12 col-md-3 col-xxl-2">
             <div class="card">
                 <img src="https://topitop.vteximg.com.br/arquivos/ids/378508-500-624/3085651_1.jpg?v=638764055394300000"
                      class="card-img-top" alt="Chaqueta de Cuero">
                 <div class="card-body">
                     <h5 class="card-title" th:text="#{item.one}">Chaqueta de Cuero</h5>
-                    <p class="card-text" th:text="#{item.oneDesc}">Chaqueta de cuero auténtico, ideal para cualquier
+                    <p class="card-text text-truncate" th:text="#{item.oneDesc}">Chaqueta de cuero auténtico, ideal para cualquier
                         ocasión.</p>
                     <p class="card-price">$89.99</p>
                     <a href="#" class="btn btn-primary" th:text="#{home.AddToCart}">Agregar al Carrito</a>
@@ -168,13 +170,13 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-sm-12 col-md-3 col-xxl-2">
             <div class="card">
                 <img src="https://topitop.vteximg.com.br/arquivos/ids/378508-500-624/3085651_1.jpg?v=638764055394300000"
                      class="card-img-top" alt="Chaqueta de Cuero">
                 <div class="card-body">
                     <h5 class="card-title" th:text="#{item.three}">Chaqueta de Cuero</h5>
-                    <p class="card-text" th:text="#{item.threeDesc}">Chaqueta de cuero auténtico, ideal para cualquier
+                    <p class="card-text text-truncate" th:text="#{item.threeDesc}">Chaqueta de cuero auténtico, ideal para cualquier
                         ocasión.</p>
                     <p class="card-price">$89.99</p>
                     <a href="#" class="btn btn-primary" th:text="#{home.AddToCart}">Agregar al Carrito</a>
@@ -182,13 +184,13 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-sm-12 col-md-3 col-xxl-2">
             <div class="card">
                 <img src="https://topitop.vteximg.com.br/arquivos/ids/378508-500-624/3085651_1.jpg?v=638764055394300000"
                      class="card-img-top" alt="Chaqueta de Cuero">
                 <div class="card-body">
-                    <h5 class="card-title" th:text="#{chaqueta}">Chaqueta de Cuero</h5>
-                    <p class="card-text" th:text="#{item.twoDesc}">Chaqueta de cuero auténtico, ideal para cualquier
+                    <h5 class="card-title" th:text="#{item.two}">Chaqueta de Cuero</h5>
+                    <p class="card-text text-truncate" th:text="#{item.twoDesc}">Chaqueta de cuero auténtico, ideal para cualquier
                         ocasión.</p>
                     <p class="card-price">$89.99</p>
                     <a href="#" class="btn btn-primary" th:text="#{home.AddToCart}">Agregar al Carrito</a>
@@ -196,13 +198,13 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-sm-12 col-md-3 col-xxl-2">
             <div class="card">
                 <img src="https://topitop.vteximg.com.br/arquivos/ids/378508-500-624/3085651_1.jpg?v=638764055394300000"
                      class="card-img-top" alt="Chaqueta de Cuero">
                 <div class="card-body">
-                    <h5 class="card-title" th:text="#{chaqueta}">Chaqueta de Cuero</h5>
-                    <p class="card-text">Chaqueta de cuero auténtico, ideal para cualquier ocasión.</p>
+                    <h5 class="card-title" th:text="#{item.two}">Chaqueta de Cuero</h5>
+                    <p class="card-text text-truncate" th:text="#{item.twoDesc}">Chaqueta de cuero auténtico, ideal para cualquier ocasión.</p>
                     <p class="card-price">$89.99</p>
                     <a href="#" class="btn btn-primary" th:text="#{home.AddToCart}">Agregar al Carrito</a>
                 </div>
@@ -212,49 +214,51 @@
 </div>
 <!--Fin Cards-->
 <!--Footer-->
-<footer class="bg-dark text-light py-4">
+<footer class="bg-dark text-light pt-5 mt-5">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-3 mb-2">
+            <div class="col-6 col-md-3 mb-2">
                 <img src="/img/inti_logo.svg" th:src="@{/img/inti_logo.svg}"
                      alt="Inti Moda Logo" class="footer-logo w-25">
                 <ul class="list-unstyled list-inline">
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="bi bi-facebook"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="bi bi-instagram"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="bi bi-tiktok"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="bi bi-whatsapp"></i></a></li>
+                    <li class="list-inline-item"><a th:href="@{/}" class="social-link text-decoration-none text-white"><i class="bi bi-facebook"></i></a></li>
+                    <li class="list-inline-item"><a th:href="@{/}" class="social-link text-decoration-none text-white"><i class="bi bi-instagram"></i></a>
+                    </li>
+                    <li class="list-inline-item"><a th:href="@{/}" class="social-link text-decoration-none text-white"><i class="bi bi-tiktok"></i></a></li>
+                    <li class="list-inline-item"><a th:href="@{/}" class="social-link text-decoration-none text-white"><i class="bi bi-whatsapp"></i></a></li>
                 </ul>
             </div>
-            <div class="col-12 col-md-3 mb-2">
+            <div class="col-6 col-md-3 mb-2">
                 <h5 th:text="#{footer.products}">Products</h5>
                 <ul class="list-unstyled ">
-                    <li><a href="#" th:text="#{footer.shoes}">Shoes</a></li>
-                    <li><a href="#" th:text="#{footer.clothing}">Clothing</a></li>
-                    <li><a href="#" th:text="#{footer.accessories}">Accessories</a></li>
-                    <li><a href="#" th:text="#{footer.news}">News</a></li>
-                    <li><a href="#" th:text="#{footer.outlet}">Outlet</a></li>
+                    <li><a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.shoes}">Shoes</a></li>
+                    <li><a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.clothing}">Clothing</a></li>
+                    <li><a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.accessories}">Accessories</a></li>
+                    <li><a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.news}">News</a></li>
+                    <li><a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.outlet}">Outlet</a></li>
                 </ul>
             </div>
-            <div class="col-12 col-md-3 mb-2">
+            <div class="col-6 col-md-3 mb-2">
                 <h5 th:text="#{footer.collections}">Collections</h5>
                 <ul class="list-unstyled">
-                    <li><a href="#" th:text="#{footer.summer}">Summer 2025</a></li>
-                    <li><a href="#" th:text="#{footer.trends}">Trends</a></li>
-                    <li><a href="#" th:text="#{footer.casual}">Casual</a></li>
-                    <li><a href="#" th:text="#{footer.elegant}">Elegant</a></li>
-                    <li><a href="#" th:text="#{footer.exclusive}">Exclusive</a></li>
+                    <li><a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.summer}">Summer 2025</a></li>
+                    <li><a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.trends}">Trends</a></li>
+                    <li><a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.casual}">Casual</a></li>
+                    <li><a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.elegant}">Elegant</a></li>
+                    <li><a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.exclusive}">Exclusive</a></li>
                 </ul>
             </div>
-            <div class="col-12 col-md-3 mb-2">
+            <div class="col-6 col-md-3 mb-2">
                 <h5 th:text="#{footer.customerService}">Customer Service</h5>
                 <p class="small text-secondary mb-3">RUC: 20501057682</p>
                 <ul class="footer-links list-unstyled">
-                    <li><a href="tel:+51912345678"><i class="bi bi-telephone me-2"></i>912 345 678</a></li>
-                    <li><a href="mailto:contacto@intimoda.pe"><i class="bi bi-envelope me-2"></i>contacto@intimoda.pe</a></li>
+                    <li><a th:href="@{/}" class="text-decoration-none text-white"><i class="bi bi-telephone me-2"></i>912 345 678</a></li>
+                    <li><a th:href="@{/}" class="text-decoration-none text-white"><i
+                            class="bi bi-envelope me-2"></i>contacto @ intimoda. pe</a></li>
                 </ul>
-                <div class="book-link">
-                    <a href="libroReclamaciones.html">
-                        <img class="lazy-load loaded"
+                <div>
+                    <a th:href="@{/libroReclamaciones}">
+                        <img class="lazy-load loaded w-50"
                              data-src="https://promart.vteximg.com.br/arquivos/icon-libro-reclamaciones.png?v=637515291210330000"
                              alt="Complaint Book"
                              src="https://promart.vteximg.com.br/arquivos/icon-libro-reclamaciones.png?v=637515291210330000">
@@ -264,16 +268,16 @@
         </div>
         <hr>
         <div class="row">
-            <div class="col-12 text-center">
-                <div>
-                    <a href="#">Política de Privacidad</a>
-                    <a href="#">Términos y Condiciones</a>
-                    <a href="#">Cookies</a>
-                    <a href="#">Preguntas Frecuentes</a>
-                    <a href="#">Envíos y Devoluciones</a>
-                    <a href="#">Contacto</a>
+            <div class="col-12">
+                <div class="d-sm-flex gap-md-4 justify-content-center">
+                    <a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.privacyPolicy}">Política de Privacidad</a>
+                    <a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.terms}">Términos y Condiciones</a>
+                    <a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.privacyPolicy}">Cookies</a>
+                    <a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.faq}">Preguntas Frecuentes</a>
+                    <a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.shippingReturns}">Envíos y Devoluciones</a>
+                    <a th:href="@{/}" class="text-decoration-none text-white" th:text="#{footer.contact}">Contacto</a>
                 </div>
-                <p class="copyright">© 2025 Inti Moda Perú. Todos los derechos reservados.</p>
+                <p class="copyright text-center mt-3 text-secondary" th:text="#{footer.copyright}">© 2025 Inti Moda Perú. Todos los derechos reservados.</p>
             </div>
         </div>
     </div>
