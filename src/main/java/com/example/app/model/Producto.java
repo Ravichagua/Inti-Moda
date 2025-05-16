@@ -1,4 +1,4 @@
-package com.example.intimoda;
+package com.example.app.model;
 
 public class Producto {
     private long id;

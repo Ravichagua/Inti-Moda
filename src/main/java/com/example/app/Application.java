@@ -1,18 +1,14 @@
-package com.example.intimoda;
+package com.example.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-
 @SpringBootApplication
-public class IntiModa {
+public class Application {
 
 	public static void main(String[] args) {
 
-		SpringApplication.run(IntiModa.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 

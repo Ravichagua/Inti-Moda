@@ -1,5 +1,7 @@
-package com.example.intimoda;
+package com.example.app.controller;
 
+import com.example.app.model.Producto;
+import com.example.app.repository.ProductoDAO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

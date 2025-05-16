@@ -1,6 +1,7 @@
-package com.example.intimoda;
+package com.example.app.repository;
 
-import com.example.intimoda.util.DatabaseConnection;
+import com.example.app.model.Producto;
+import com.example.app.util.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
