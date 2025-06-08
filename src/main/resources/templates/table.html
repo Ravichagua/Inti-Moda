@@ -34,11 +34,32 @@
     <p th:text="#{language}">Language</p>
 
     <div class="language-links">
-        <a th:href="@{/index(lang='en')}" th:text="#{english}">English</a> |
+        <a th:href="@{/index(lang='en')}" th:text="#{english}">English</a>
         <a th:href="@{/index(lang='es')}" th:text="#{spanish}">Español</a>
     </div>
 
-    
-    
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>email</th>
+                <th>name</th>
+                <th>lastname</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.password}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.lastname}"></td>
+            </tr>
+        </tbody>
+    </table>
+
 </body>
 </html>

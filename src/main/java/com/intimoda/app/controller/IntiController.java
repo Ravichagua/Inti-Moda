@@ -1,68 +1,57 @@
-package com.example.app.controller;
+package com.intimoda.app.controller;
 
-import com.example.app.model.Producto;
-import com.example.app.repository.ProductoDAO;
+import com.intimoda.app.jpa.model.User;
+import com.intimoda.app.jpa.repository.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import java.util.List;
 import java.util.Locale;
 
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.support.RequestContextUtils;
+import lombok.RequiredArgsConstructor;
+
 @Controller
+@RequiredArgsConstructor
 public class IntiController {
 
     @GetMapping("/")
     public String root() {
+
         return "inicio";
     }
     @GetMapping("/libroReclamaciones")
     public String libroReclamaciones() {
 
-        return "libroReclamaciones"; // mostrará about.html
+        return "libroReclamaciones";
     }
     @GetMapping("/inicioSesion")
     public String inicioSesion() {
 
-        return "inicioSesion"; // mostrará about.html
+        return "inicioSesion";
     }
-    @GetMapping("/registro")
-    public String registro() {
 
-        return "registro"; // mostrará about.html
-    }
     @GetMapping("/inicio")
     public String inicio() {
 
-        return "inicio"; // mostrará about.html
+        return "inicio";
     }
     @GetMapping("/carrito")
     public String carrito() {
 
-        return "carrito"; // mostrará about.html
+        return "carrito";
     }
 
-    @GetMapping("/index")
-    public String index(){
-        return "index";
-    }
 
-    @GetMapping("/about")
-    public String about(Model model) {
-        ProductoDAO dao = new ProductoDAO();
-        List<Producto> productos = dao.obtenerProductos();
-        model.addAttribute("listaProductos", productos);
 
-        return "about"; // mostrará about.html
-    }
 
-    
     @GetMapping("/lang")
     public String cambiarIdioma(@RequestParam String lang, HttpServletRequest request, HttpServletResponse response) {
     LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);

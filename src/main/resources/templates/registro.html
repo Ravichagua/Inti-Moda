@@ -86,90 +86,104 @@
 <div class="form-container">
     <h5 class="mb-3" th:text="#{register.title}">Register to buy</h5>
 
-    <form class="needs-validation" novalidate>
+    <!--Form -->
+    <form class="needs-validation" th:action="@{/users/registUser}" th:object="${user}" method="post">
+
+
+        <!--email-->
         <div class="mb-3">
             <label for="correo" class="form-label" th:text="#{register.email}">Email</label>
-            <input type="email" class="form-control" id="correo" th:placeholder="#{register.email.placeholder}"
+            <input type="email" class="form-control" id="correo" th:field="*{email}" th:placeholder="#{register.emailPlaceholder}"
                    required>
-            <div class="invalid-feedback" th:text="#{register.email.invalid}">Enter a valid email.</div>
+            <div class="invalid-feedback" th:text="#{register.emailInvalid}">Enter a valid email.</div>
         </div>
-
+        <!--username-->
+        <div class="mb-3">
+            <label for="username" class="form-label" th:text="#{register.username}">Username</label>
+            <input type="text" class="form-control" id="username" th:field="*{username}" th:placeholder="#{register.usernamePlaceholder}"
+                   required>
+            <div class="invalid-feedback" th:text="#{register.usernameInvalid}">Enter a valid username.</div>
+        </div>
+        <!--password-->
         <div class="mb-3">
             <label for="password" class="form-label" th:text="#{register.password}">Password</label>
-            <input type="password" class="form-control" id="password" minlength="8"
-                   pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}" required>
-            <div class="form-text" th:text="#{register.password.requirements}">
+            <input type="password" class="form-control" id="password"
+                    th:field="*{password}" required>
+
+            <div class="form-text" th:text="#{register.passwordRequirements}">
                 • Min. 8 characters | • 1 uppercase | • 1 lowercase | • 1 number
             </div>
             <div class="invalid-feedback" th:text="#{register.password.invalid}">Password does not meet the
                 requirements.
             </div>
         </div>
-
+        <!--name-->
         <div class="mb-3">
             <label for="nombre" class="form-label" th:text="#{register.firstName}">First Name</label>
-            <input type="text" class="form-control" id="nombre" required>
-            <div class="invalid-feedback" th:text="#{register.firstName.invalid}">Enter your first name.</div>
+            <input type="text" class="form-control" id="nombre" th:field="*{name}" required>
+            <div class="invalid-feedback" th:text="#{register.firstNameInvalid}">Enter your first name.</div>
         </div>
-
+        <!--lastname-->
         <div class="mb-3">
             <label for="apellidos" class="form-label" th:text="#{register.lastName}">Last Name</label>
-            <input type="text" class="form-control" id="apellidos" required>
-            <div class="invalid-feedback" th:text="#{register.lastName.invalid}">Enter your last name.</div>
+            <input type="text" class="form-control" id="apellidos" th:field="*{lastname}" required>
+            <div class="invalid-feedback" th:text="#{register.lastNameInvalid}">Enter your last name.</div>
         </div>
-
+        <!--Document Type-->
         <div class="mb-3">
             <label for="documento" class="form-label" th:text="#{register.documentType}">Document Type</label>
-            <select class="form-select" id="documento" required>
-                <option value="dni" th:text="#{register.dni}">DNI</option>
-                <option value="ce" th:text="#{register.foreignCard}">Foreign Card</option>
+            <select class="form-select" id="documento" th:field="*{documentType}" required>
+                <option th:text="#{register.optionSelect}" th:value="ningunoError" selected hidden>Selecciona una opcion</option>
+                <option th:each="document :${documentTypeList}"
+                        th:value="${document}"
+                        th:text="${#messages.msg('register.' + document.name())}">Tipo</option>
             </select>
             <div class="invalid-feedback" th:text="#{register.documentType.invalid}">Select a document type.
             </div>
         </div>
-
+        <!--Document Number-->
         <div class="mb-3">
             <label for="numero" class="form-label" th:text="#{register.documentNumber}">Document Number</label>
-            <input type="text" class="form-control" id="numero" pattern="[0-9]{8}" required>
-            <div class="invalid-feedback" th:text="#{register.documentNumber.invalid}">Enter a valid document
+            <input type="text" class="form-control" id="numero" pattern="[0-9]{8}" th:field="*{documentNumber}" required>
+            <div class="invalid-feedback" th:text="#{register.documentNumberInvalid}">Enter a valid document
                 number.
             </div>
         </div>
-
+        <!--Phone-->
         <div class="mb-3">
             <label for="celular" class="form-label" th:text="#{register.phone}">Phone</label>
             <div class="input-group">
                 <span class="input-group-text">+51</span>
-                <input type="tel" class="form-control" id="celular" pattern="[0-9]{9}" required>
+                <input type="tel" class="form-control" id="celular" pattern="[0-9]{9}" th:field="*{phone}" required>
             </div>
-            <div class="invalid-feedback" th:text="#{register.phone.invalid}">Enter a valid 9-digit phone
+            <div class="invalid-feedback" th:text="#{register.phoneInvalid}">Enter a valid 9-digit phone
                 number.
             </div>
         </div>
-
+        <!--Checkbox 1-->
         <div class="form-check mb-2">
-            <input class="form-check-input" type="checkbox" value="" id="condiciones1" required>
-            <label class="form-check-label" for="condiciones1" th:utext="#{register.terms1}">
+            <input class="form-check-input" type="checkbox" value="" id="terminos1" required>
+            <label class="form-check-label" for="terminos1" th:utext="#{register.terms1}">
                 I accept the terms and condition.
             </label>
-            <div class="invalid-feedback" th:text="#{register.terms1.invalid}">You must accept the terms.</div>
+            <div class="invalid-feedback" th:text="#{register.terms1Invalid}">You must accept the terms.</div>
         </div>
-
+        <!--Checkbox 2-->
         <div class="form-check mb-4">
-            <input class="form-check-input" type="checkbox" value="" id="condiciones2" required>
-            <label class="form-check-label" for="condiciones2" th:utext="#{register.terms2}">
+            <input class="form-check-input" type="checkbox" value="" id="terminos2" required>
+            <label class="form-check-label" for="terminos2" th:utext="#{register.terms2}">
                 I accept the privacy policy and the terms of falabella.com.
             </label>
-            <div class="invalid-feedback" th:text="#{register.terms2.invalid}">You must accept the privacy
+            <div class="invalid-feedback" th:text="#{register.terms2Invalid}">You must accept the privacy
                 policy.
             </div>
         </div>
-
-        <button class="btn btn-dark w-100" type="submit" th:text="#{register.button}">Register</button>
-
+        <!--Button-->
+        <button class="btn btn-dark w-100" type="submit" th:text="#{register.button}" id="enviar" disabled>Register</button>
+        <!--Disclaimer-->
         <div class="mt-3 text-center">
             <span th:text="#{register.haveAccount}">Already have an account?</span>
-            <a href="inicioSesion.html" th:text="#{register.login}">Login</a>
+            <a th:href="@{inicioSesion}" th:text="#{register.login}">Login</a>
         </div>
     </form>
 </div>
@@ -244,6 +258,26 @@
     </div>
 </footer>
 <!--Fin Footer-->
+<script>
+    const termino1 =document.getElementById('terminos1');
+    const termino2 =document.getElementById('terminos2');
+    const boton =document.getElementById('enviar');
+
+    function checkInputs(){
+        if(termino1.checked && termino2.checked){
+            boton.disabled=false;
+        }else{
+            boton.disabled=true;
+        }
+    }
+
+    termino1.addEventListener("change",checkInputs);
+    termino2.addEventListener("change",checkInputs);
+
+
+
+</script>
+
 </body>
 
 </html>
