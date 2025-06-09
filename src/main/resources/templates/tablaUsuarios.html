@@ -25,18 +25,15 @@
         .language-links a:hover {
             text-decoration: underline;
         }
+        th{
+            border: 1px solid black;
+        }
+        td{
+            border: 1px solid black;
+        }
     </style>
 </head>
 <body>
-
-    <a th:href="@{/about}">jajajajaja</a>
-
-    <p th:text="#{language}">Language</p>
-
-    <div class="language-links">
-        <a th:href="@{/index(lang='en')}" th:text="#{english}">English</a>
-        <a th:href="@{/index(lang='es')}" th:text="#{spanish}">Español</a>
-    </div>
 
     <table>
         <thead>

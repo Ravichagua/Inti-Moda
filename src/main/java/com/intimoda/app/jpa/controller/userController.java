@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.intimoda.app.services.loginService;
+
 
 @Controller
 @RequestMapping("/users")
@@ -17,18 +21,16 @@ public class userController {
 
     @Autowired
     private UserRepository userRepository;
-    //Registro de usuario
-    @GetMapping("/registro")
-    public String registro(Model model) {
-        model.addAttribute("user", new User());
-        model.addAttribute("documentTypeList", DocumentType.values());
-        return "registro";
-    }
+    @Autowired
+    private loginService loginService;
+
+
+    
     //tabla de usuarios
     @GetMapping("/table")
     public String testing(Model model ) {
         model.addAttribute("users",userRepository.findAll());
-        return "table";
+        return "tablaUsuarios";
     }
     //Accion registrar formularios
     @PostMapping("/registUser")
@@ -36,6 +38,19 @@ public class userController {
         userRepository.save(user);
         return "redirect:/users/table";
     }
+    
+    @PostMapping("/login")
+    public String authentification(@RequestParam String email,@RequestParam String password,Model modeloLogin) {
+        if(loginService.login(email,password)){
+           modeloLogin.addAttribute("successLogin",true);
+            return "redirect:/inicio";
+            
+        }else{
+            modeloLogin.addAttribute("errorLogin",true);
+            return "inicioSesion";
+        }
+        
+    }
 
-
+    
 }

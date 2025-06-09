@@ -144,7 +144,7 @@
         <!--Document Number-->
         <div class="mb-3">
             <label for="numero" class="form-label" th:text="#{register.documentNumber}">Document Number</label>
-            <input type="text" class="form-control" id="numero" pattern="[0-9]{8}" th:field="*{documentNumber}" required>
+            <input type="text" class="form-control" id="numero" th:field="*{documentNumber}" required>
             <div class="invalid-feedback" th:text="#{register.documentNumberInvalid}">Enter a valid document
                 number.
             </div>

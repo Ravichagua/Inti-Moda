@@ -88,21 +88,24 @@
 <div class="form-container">
     <h5 class="mb-3" th:text="#{login.subtitle}">Inicia sesión para comprar</h5>
 
-    <form class="needs-validation" novalidate>
+    <form class="needs-validation" th:action="@{/users/login}" method="post">
         <div class="mb-3">
-            <label for="correo" class="form-label" th:text="#{login.email}">Correo</label>
-            <input type="email" class="form-control" id="correo" th:placeholder="#{login.emailPlaceholder}" required>
+            <label for="email" class="form-label" th:text="#{login.email}">Correo</label>
+            <input type="email" class="form-control" id="email" th:placeholder="#{login.emailPlaceholder}" name="email" required>
             <div class="invalid-feedback" th:text="#{registro.correo.invalido}">Ingresa un correo válido.</div>
         </div>
 
         <div class="mb-3">
             <label for="password" class="form-label" th:text="#{login.password}">Contraseña</label>
-            <input type="password" class="form-control" id="password" minlength="8"
-                   pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}" required>
+            <input type="password" class="form-control" id="password" th:placeholder="#{login.passwordPlaceholder}" name="password" required>
             <div class="invalid-feedback" th:text="#{registro.contrasena.invalida}">La contraseña no cumple con los
                 requisitos.
             </div>
         </div>
+        <!--error message-->
+        <p th:if="${errorLogin}" th:text="#{login.errorLogin}" style="color: red;"></p>
+        <!--success message-->
+        <p th:if="${successLogin}" th:text="#{login.successLogin}" style="color: green;"></p>
 
         <button class="btn btn-dark w-100" type="submit" th:text="#{login.button}">Iniciar sesión</button>
 

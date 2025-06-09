@@ -18,6 +18,10 @@ import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.support.RequestContextUtils;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.ui.Model;
+import com.intimoda.app.jpa.enums.DocumentType;
+import com.intimoda.app.jpa.model.User;
+
 @Controller
 @RequiredArgsConstructor
 public class IntiController {
@@ -48,7 +52,14 @@ public class IntiController {
 
         return "carrito";
     }
-
+    //Registro de usuario
+    @GetMapping("/registro")
+    public String registro(Model model) {
+        model.addAttribute("user", new User());
+        model.addAttribute("documentTypeList", DocumentType.values());
+        return "registro";
+    }
+    
 
 
 
