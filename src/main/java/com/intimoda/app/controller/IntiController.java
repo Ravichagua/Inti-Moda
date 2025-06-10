@@ -16,6 +16,7 @@ import java.util.Locale;
 
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.support.RequestContextUtils;
+import org.springframework.web.bind.annotation.PathVariable;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.ui.Model;
@@ -63,16 +64,33 @@ public class IntiController {
 
 
 
-    @GetMapping("/lang")
-    public String cambiarIdioma(@RequestParam String lang, HttpServletRequest request, HttpServletResponse response) {
-    LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
-    if (localeResolver != null) {
-        localeResolver.setLocale(request, response, new Locale(lang));
+    @GetMapping("/{id}")
+    public String switchLang(@PathVariable String id, HttpServletRequest request) {
+        // Validar idioma
+        if (!id.equals("es") && !id.equals("en")) {
+            return "redirect:/"; // idioma no válido, redirige al inicio
+        }
+
+        // Obtener la URL anterior
+        String referer = request.getHeader("Referer");
+        if (referer == null) {
+            referer = "/";
+        }
+        String url;
+if (referer.contains("?")) {
+    // Si ya tiene parámetros, verificar si tiene lang
+    if (referer.contains("lang=")) {
+        // Reemplazar el valor existente de lang
+        url = referer.replaceAll("lang=[^&]*", "lang=" + id);
+    } else {
+        // Añadir el nuevo parámetro lang
+        url = referer + "&lang=" + id;
     }
-    String referer = request.getHeader("Referer");
-    if (referer != null) {
-        return "redirect:" + referer;
-    }
-    return "redirect:/";
+} else {
+    // Si no tiene parámetros, añadir el lang
+    url = referer + "?lang=" + id;
+}
+
+        return "redirect:" + url;
     }
 }
