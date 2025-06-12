@@ -18,4 +18,5 @@ public class Producto {
     private float precio;
     private int stock;
     private String categoria;
+    private String imagenUrl;
 }

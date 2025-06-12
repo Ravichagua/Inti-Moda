@@ -1,7 +1,7 @@
 package com.intimoda.app.jpa.controller;
 
+import com.intimoda.app.jpa.model.Producto;
 import com.intimoda.app.jpa.model.Reclamacion;
-import com.intimoda.app.jpa.repository.ReclamacionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,39 +10,39 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
+import com.intimoda.app.services.ReclamacionService;
 
 @Controller
 @RequestMapping("/reclamos")
-public class reclamacionController {
+public class ReclamacionController {
 
     @Autowired
-    private ReclamacionRepository reclamoRepository;
+    private ReclamacionService reclamacionService;
 
     //#####################     CRUD      ###########################
     //LEER / READ
     @GetMapping
     public String mostrarReclamos(Model model ) {
-        model.addAttribute("reclamos",reclamoRepository.findAll());
+        model.addAttribute("reclamos",reclamacionService.obtenerTodos());
         return "tablaReclamos";
     }
     //CREAR / CREATE
     @PostMapping("/guardar")
     public String guardarReclamo(@ModelAttribute Reclamacion reclamo){
-        reclamoRepository.save(reclamo);
+        reclamacionService.guardar(reclamo);
         return "redirect:/reclamos";
     }
     //ELIMINAR / DELETE
     @PostMapping("/eliminar/{id}")
     public String eliminarReclamo(@PathVariable Long id){
-        reclamoRepository.deleteById(id);
+        reclamacionService.eliminar(id);
         return "redirect:/reclamos";
     }
     //EDITAR / UPDATE
-    @GetMapping("/editar/{id}")
-    public String editarReclamo(@PathVariable Long id, Model model) {
-        Reclamacion reclamacion = reclamoRepository.findById(id).orElseThrow();
-        model.addAttribute("reclamo", reclamacion);
+    @PostMapping("/editar/{id}")
+    public String editarReclamo(@PathVariable Long id, @ModelAttribute Reclamacion reclamoEditado) {
+        reclamoEditado.setId(id);
+        reclamacionService.guardar(reclamoEditado);
         return "redirect:/reclamos";
     }
     //###############################################################

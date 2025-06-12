@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="#{app.title}">Language Switcher App</title>
+    <title >Tabla usuarios</title>
     <div th:insert="componentes :: head"></div>
     <style>
         th{
@@ -14,7 +14,7 @@
 </head>
 <body>
     <a th:href="@{/}">Inicio</a>
-    <table class="text-center">
+    <table class="text-center w-100">
         <thead>
             <tr>
                 <th>ID</th>
@@ -23,6 +23,8 @@
                 <th>Email</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
+                <th>Telefono</th>
+                <th>Documento</th>
                 <th>Accion</th>
             </tr>
         </thead>
@@ -34,8 +36,10 @@
                 <td th:text="${user.email}"></td>
                 <td th:text="${user.name}"></td>
                 <td th:text="${user.lastname}"></td>
+                <td th:text="${user.documentNumber}"></td>
+                <td th:text="${user.phone}"></td>
                 <td>
-                    <form th:action="@{'eliminar/' + ${user.id}}" method="post">
+                    <form th:action="@{'users/eliminar/' + ${user.id}}" method="post">
                         <button type="submit">Eliminar</button>
                     </form>
                 </td>

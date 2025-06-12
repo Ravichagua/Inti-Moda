@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="#{app.title}">Language Switcher App</title>
+    <title>Tabla reclamos</title>
     <div th:insert="componentes :: head"></div>
     <style>
         th{
@@ -14,15 +14,22 @@
 </head>
 <body>
     <a th:href="@{/}">Inicio</a>
-    <table class="text-center">
+    <table class="text-center w-100">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>nombre</th>
-                <th>apellidos</th>
-                <th>email</th>
-                <th>telefono</th>
-                <th>tipoReclamo</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Número Documento</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Dirección</th>
+                <th>Tipo Reclamo</th>
+                <th>Número Pedido</th>
+                <th>Fecha Compra</th>
+                <th>Producto/Servicio</th>
+                <th>Descripción</th>
+                <th>Pedido del Consumidor</th>
                 <th>Accion</th>
             </tr>
         </thead>
@@ -31,11 +38,18 @@
                 <td th:text="${reclamo.id}"></td>
                 <td th:text="${reclamo.nombres}"></td>
                 <td th:text="${reclamo.apellidos}"></td>
-                <td th:text="${reclamo.email}"></td>
+                <td th:text="${reclamo.numeroDocumento}"></td>
                 <td th:text="${reclamo.telefono}"></td>
+                <td th:text="${reclamo.email}"></td>
+                <td th:text="${reclamo.direccion}"></td>
                 <td th:text="${reclamo.tipoReclamo}"></td>
+                <td th:text="${reclamo.numeroPedido}"></td>
+                <td th:text="${reclamo.fechaCompra}"></td>
+                <td th:text="${reclamo.productoServicio}"></td>
+                <td th:text="${reclamo.descripcion}"></td>
+                <td th:text="${reclamo.pedidoConsumidor}"></td>
                 <td>
-                    <form th:action="@{'eliminar/' + ${reclamo.id}}" method="post">
+                    <form th:action="@{'reclamos/eliminar/' + ${reclamo.id}}" method="post">
                         <button type="submit">Eliminar</button>
                     </form>
                 </td>
