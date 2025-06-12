@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
     <title>Formulario de Producto</title>
+    <div  th:insert="componentes :: head"></div>
 </head>
 <body>
+<div>
     <h1>Agregar Producto</h1>
-    <form action="/producto/guardar" method="post">
+    <form action="/productos/guardar" method="post">
         <label for="nombre">Nombre:</label><br>
         <input type="text" id="nombre" name="nombre"><br><br>
 
         <label for="descripcion">Descripción:</label><br>
-        <input type="text" id="descripcion" name="descripcion"><br><br>
+        <!--<input type="text" id="descripcion" name="descripcion">-->
+        <textarea type="text" id="descripcion" name="descripcion"></textarea>
+        <br><br>
 
         <label for="precio">Precio:</label><br>
         <input type="number" step="1" id="precio" name="precio"><br><br>
@@ -20,9 +23,12 @@
         <input type="number" id="stock" name="stock"><br><br>
 
         <label for="categoria">Categoría:</label><br>
-        <input type="text" id="categoria" name="categoria"><br><br>
+        <input type="text" id="categoria" name="categoria">
+        <br><br>
+
 
         <input type="submit" value="Guardar Producto">
     </form>
+</div>
 </body>
 </html>

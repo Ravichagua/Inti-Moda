@@ -1,35 +1,34 @@
 package com.intimoda.app.controller;
 
 import com.intimoda.app.jpa.model.User;
-import com.intimoda.app.jpa.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 
-import java.util.Locale;
-
-import org.springframework.web.servlet.LocaleResolver;
-import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.ui.Model;
-import com.intimoda.app.jpa.enums.DocumentType;
-import com.intimoda.app.jpa.model.User;
+import com.intimoda.app.jpa.model.DocumentType;
+import com.intimoda.app.jpa.repository.ProductoRepository;
 
 @Controller
 @RequiredArgsConstructor
 public class IntiController {
 
-    @GetMapping("/")
-    public String root() {
+    @Autowired
+    private ProductoRepository productoRepository;
 
+    @GetMapping("/")
+    public String root(Model model) {
+        model.addAttribute("productos",productoRepository.findAll());
+        return "inicio";
+    }
+    @GetMapping("/inicio")
+    public String inicio(Model model) {
+        model.addAttribute("productos",productoRepository.findAll());
         return "inicio";
     }
     @GetMapping("/libroReclamaciones")
@@ -43,11 +42,6 @@ public class IntiController {
         return "inicioSesion";
     }
 
-    @GetMapping("/inicio")
-    public String inicio() {
-
-        return "inicio";
-    }
     @GetMapping("/carrito")
     public String carrito() {
 
@@ -60,10 +54,7 @@ public class IntiController {
         model.addAttribute("documentTypeList", DocumentType.values());
         return "registro";
     }
-    
-
-
-
+    //Este id es para el lenguage 'en' o 'es'
     @GetMapping("/{id}")
     public String switchLang(@PathVariable String id, HttpServletRequest request) {
         // Validar idioma

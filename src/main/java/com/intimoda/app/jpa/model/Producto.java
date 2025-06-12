@@ -1,8 +1,6 @@
 package com.intimoda.app.jpa.model;
 
-import com.intimoda.app.jpa.enums.DocumentType;
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;

@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PathVariable;
-
-import com.intimoda.app.services.loginService;
 
 
 @Controller
@@ -21,24 +18,33 @@ public class reclamacionController {
 
     @Autowired
     private ReclamacionRepository reclamoRepository;
-    
-    //tabla de usuarios
-    @GetMapping("/tabla")
-    public String tablaReclamo(Model model ) {
+
+    //#####################     CRUD      ###########################
+    //LEER / READ
+    @GetMapping
+    public String mostrarReclamos(Model model ) {
         model.addAttribute("reclamos",reclamoRepository.findAll());
         return "tablaReclamos";
     }
-    //Accion registrar formularios
-    @PostMapping("/guardarReclamo")
+    //CREAR / CREATE
+    @PostMapping("/guardar")
     public String guardarReclamo(@ModelAttribute Reclamacion reclamo){
         reclamoRepository.save(reclamo);
-        return "redirect:/reclamos/tabla";
+        return "redirect:/reclamos";
     }
+    //ELIMINAR / DELETE
     @PostMapping("/eliminar/{id}")
     public String eliminarReclamo(@PathVariable Long id){
         reclamoRepository.deleteById(id);
-        return "redirect:/reclamos/tabla";
+        return "redirect:/reclamos";
     }
-
+    //EDITAR / UPDATE
+    @GetMapping("/editar/{id}")
+    public String editarReclamo(@PathVariable Long id, Model model) {
+        Reclamacion reclamacion = reclamoRepository.findById(id).orElseThrow();
+        model.addAttribute("reclamo", reclamacion);
+        return "redirect:/reclamos";
+    }
+    //###############################################################
     
 }

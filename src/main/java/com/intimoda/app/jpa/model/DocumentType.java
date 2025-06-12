@@ -1,4 +1,4 @@
-package com.intimoda.app.jpa.enums;
+package com.intimoda.app.jpa.model;
 
 public enum DocumentType {
     dni,
