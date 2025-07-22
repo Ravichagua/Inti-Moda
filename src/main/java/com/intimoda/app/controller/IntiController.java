@@ -1,5 +1,7 @@
 package com.intimoda.app.controller;
 
+import com.intimoda.app.DTO.LoginRequest;
+import com.intimoda.app.DTO.UserDTO;
 import com.intimoda.app.jpa.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,8 +39,8 @@ public class IntiController {
         return "libroReclamaciones";
     }
     @GetMapping("/inicioSesion")
-    public String inicioSesion() {
-
+    public String inicioSesion(Model model) {
+        model.addAttribute("loginRequest", new LoginRequest());
         return "inicioSesion";
     }
 
@@ -50,7 +52,7 @@ public class IntiController {
     //Registro de usuario
     @GetMapping("/registro")
     public String registro(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("user", new UserDTO());
         model.addAttribute("documentTypeList", DocumentType.values());
         return "registro";
     }

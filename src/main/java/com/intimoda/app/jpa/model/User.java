@@ -19,10 +19,12 @@ public class User {
     private int phone;
     private LocalDateTime registrationDate=LocalDateTime.now();
 
+    private String role;
+
     public User(){}
 
     public User(String username,String password,String email,String name,
-                String lastname,DocumentType documentType,int phone,int documentNumber){
+                String lastname,DocumentType documentType,int phone,int documentNumber,String role){
 
         this.username=username;
         this.password=password;
@@ -32,6 +34,7 @@ public class User {
         this.documentType=documentType;
         this.documentNumber=documentNumber;
         this.phone=phone;
+        this.role=role;
     }
 
     public Long getId(){
@@ -109,6 +112,14 @@ public class User {
 
     public void setRegistrationDate(LocalDateTime registrationDate) {
         this.registrationDate = registrationDate;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
 

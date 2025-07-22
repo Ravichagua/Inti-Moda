@@ -3,13 +3,13 @@
 
 <head>
     <title th:text="#{book.header}">Libro de Reclamaciones</title>
-    <div  th:insert="componentes :: head"></div>
+    <div  th:insert="~{componentes :: head}"></div>
 </head>
 
 <body class="bg-secondary">
 
 <!--Navbar-->
-<div  th:replace="componentes :: navbar"></div>
+<div  th:replace="~{componentes :: navbar}"></div>
 <!--Fin Navbar-->
 
     <!-- Cabecera del Libro de Reclamaciones -->
@@ -183,7 +183,7 @@
     </div>
 
     <!-- Footer -->
-    <div  th:replace="componentes :: footer"></div>
+    <div  th:replace="~{componentes :: footer}"></div>
     <!-- Fin Footer -->
 </body>
 

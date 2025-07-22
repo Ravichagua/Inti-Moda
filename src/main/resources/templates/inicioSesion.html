@@ -3,32 +3,37 @@
 
 <head>
     <title th:text="#{login.title}">Inti Moda</title>
-    <div th:insert="componentes :: head"></div>
+    <div th:insert="~{componentes :: head}"></div>
 
 
 </head>
 
 <body class="body-r">
 <!--Navbar-->
-<div th:replace="componentes :: navbar"></div>
+<div th:replace="~{componentes :: navbar}"></div>
 <!--Fin Navbar-->
-<div style="background-image: url('./img/login-fondo.jpg');background-repeat: no-repeat; background-size: cover;" class="p-5">
+<div style="background-image: url('/uploads/page/login-fondo.jpg');background-repeat: no-repeat; background-size: cover;" class="p-5">
 <div class="w-50 px-5 py-4 my-5 mx-auto bg-white rounded-4">
     <h5 class="mb-3" th:text="#{login.subtitle}">Inicia sesión para comprar</h5>
 
-    <form class="needs-validation" th:action="@{/users/login}" method="post">
+    <form class="needs-validation" th:action="@{/auth/login}" th:object="${loginRequest}" method="post">
         <div class="mb-3">
             <label for="email" class="form-label" th:text="#{login.email}">Correo</label>
-            <input type="email" class="form-control" id="email" th:placeholder="#{login.emailPlaceholder}" name="email" required>
-            <div class="invalid-feedback" th:text="#{registro.correo.invalido}">Ingresa un correo válido.</div>
+            <input type="email" class="form-control" id="email" th:placeholder="#{login.emailPlaceholder}" th:field="*{email}" required>
+            <p class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
         </div>
 
         <div class="mb-3">
             <label for="password" class="form-label" th:text="#{login.password}">Contraseña</label>
-            <input type="password" class="form-control" id="password" th:placeholder="#{login.passwordPlaceholder}" name="password" required>
-            <div class="invalid-feedback" th:text="#{registro.contrasena.invalida}">La contraseña no cumple con los
-                requisitos.
-            </div>
+            <input type="password" class="form-control" id="password" th:placeholder="#{login.passwordPlaceholder}" th:field="*{password}" required>
+            <p class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+        </div>
+
+        <div th:if="${loginError}">
+            <p th:text="${loginError}" class="text-danger"></p>
+        </div>
+        <div th:if="${loginSuccess}" class="alert alert-success">
+            <p th:text="${loginSuccess}"></p>
         </div>
         <!--error message-->
         <p th:if="${errorLogin}" th:text="#{login.errorLogin}" style="color: red;"></p>
@@ -43,10 +48,11 @@
         </div>
     </form>
 
+
 </div>
 </div>
 <!--Footer-->
-<div  th:replace="componentes :: footer"></div>
+<div  th:replace="~{componentes :: footer}"></div>
 <!--Fin Footer-->
 </body>
 </html>

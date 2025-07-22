@@ -2,15 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title th:text="#{register.title}">Inti Moda</title>
-    <div th:insert="componentes :: head"></div>
+    <div th:insert="~{componentes :: head}"></div>
 </head>
 
 <body>
 <!--Navbar-->
-<div  th:replace="componentes :: navbar"></div>
+<div  th:replace="~{componentes :: navbar}"></div>
 <!--Fin Navbar-->
 
-<div style="background-image: url('./img/register-fondo.webp');background-repeat: no-repeat; background-size: cover;" class="p-5">
+<div style="background-image: url('/uploads/page/register-fondo.webp');background-repeat: no-repeat; background-size: cover;" class="p-5">
 <div class="w-50 px-5 py-4  mx-auto bg-white rounded-4">
     <h5 class="mb-3" th:text="#{register.title}">Register to buy</h5>
 
@@ -23,14 +23,14 @@
             <label for="correo" class="form-label" th:text="#{register.email}">Email</label>
             <input type="email" class="form-control" id="correo" th:field="*{email}" th:placeholder="#{register.emailPlaceholder}"
                    required>
-            <div class="invalid-feedback" th:text="#{register.emailInvalid}">Enter a valid email.</div>
+            <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
         </div>
         <!--username-->
         <div class="mb-3">
             <label for="username" class="form-label" th:text="#{register.username}">Username</label>
             <input type="text" class="form-control" id="username" th:field="*{username}" th:placeholder="#{register.usernamePlaceholder}"
                    required>
-            <div class="invalid-feedback" th:text="#{register.usernameInvalid}">Enter a valid username.</div>
+            <div class="text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
         </div>
         <!--password-->
         <div class="mb-3">
@@ -38,24 +38,19 @@
             <input type="password" class="form-control" id="password"
                     th:field="*{password}" required>
 
-            <div class="form-text" th:text="#{register.passwordRequirements}">
-                • Min. 8 characters | • 1 uppercase | • 1 lowercase | • 1 number
-            </div>
-            <div class="invalid-feedback" th:text="#{register.password.invalid}">Password does not meet the
-                requirements.
-            </div>
+            <div class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
         </div>
         <!--name-->
         <div class="mb-3">
             <label for="nombre" class="form-label" th:text="#{register.firstName}">First Name</label>
             <input type="text" class="form-control" id="nombre" th:field="*{name}" required>
-            <div class="invalid-feedback" th:text="#{register.firstNameInvalid}">Enter your first name.</div>
+            <div class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
         </div>
         <!--lastname-->
         <div class="mb-3">
             <label for="apellidos" class="form-label" th:text="#{register.lastName}">Last Name</label>
             <input type="text" class="form-control" id="apellidos" th:field="*{lastname}" required>
-            <div class="invalid-feedback" th:text="#{register.lastNameInvalid}">Enter your last name.</div>
+            <div class="text-danger" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></div>
         </div>
         <!--Document Type-->
         <div class="mb-3">
@@ -66,16 +61,15 @@
                         th:value="${document}"
                         th:text="${#messages.msg('register.' + document.name())}">Tipo</option>
             </select>
-            <div class="invalid-feedback" th:text="#{register.documentType.invalid}">Select a document type.
-            </div>
+            <div class="text-danger" th:if="${#fields.hasErrors('documentType')}" th:errors="*{documentType}"></div>
+
         </div>
+
         <!--Document Number-->
         <div class="mb-3">
             <label for="numero" class="form-label" th:text="#{register.documentNumber}">Document Number</label>
             <input type="text" class="form-control" id="numero" th:field="*{documentNumber}" required>
-            <div class="invalid-feedback" th:text="#{register.documentNumberInvalid}">Enter a valid document
-                number.
-            </div>
+            <div class="text-danger" th:if="${#fields.hasErrors('documentNumber')}" th:errors="*{documentNumber}"></div>
         </div>
         <!--Phone-->
         <div class="mb-3">
@@ -84,9 +78,7 @@
                 <span class="input-group-text">+51</span>
                 <input type="tel" class="form-control" id="celular" th:field="*{phone}" required>
             </div>
-            <div class="invalid-feedback" th:text="#{register.phoneInvalid}">Enter a valid 9-digit phone
-                number.
-            </div>
+            <div class="text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
         </div>
         <!--Checkbox 1-->
         <div class="form-check mb-2">
@@ -118,7 +110,7 @@
 </div>
 
 <!--Footer-->
-<div  th:replace="componentes :: footer"></div>
+<div  th:replace="~{componentes :: footer}"></div>
 <!--Fin Footer-->
 <script>
     const termino1 =document.getElementById('terminos1');

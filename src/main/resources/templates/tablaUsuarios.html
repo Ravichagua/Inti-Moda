@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title >Tabla usuarios</title>
-    <div th:insert="componentes :: head"></div>
+    <div th:insert="~{componentes :: head}"></div>
     <style>
         th{
             border: 1px solid black;
@@ -24,7 +24,7 @@
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Telefono</th>
-                <th>Documento</th>
+                <th>Rol</th>
                 <th>Accion</th>
             </tr>
         </thead>
@@ -36,8 +36,8 @@
                 <td th:text="${user.email}"></td>
                 <td th:text="${user.name}"></td>
                 <td th:text="${user.lastname}"></td>
-                <td th:text="${user.documentNumber}"></td>
                 <td th:text="${user.phone}"></td>
+                <td th:text="${user.role}"></td>
                 <td>
                     <form th:action="@{'users/eliminar/' + ${user.id}}" method="post">
                         <button type="submit">Eliminar</button>

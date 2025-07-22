@@ -4,13 +4,13 @@
 
     <title th:text="#{cart.title}">Inti Moda</title>
     <link th:href="@{/css/estiloCarrito.css}" rel="stylesheet"/>
-    <div  th:insert="componentes :: head"></div>
+    <div  th:insert="~{componentes :: head}"></div>
 
 </head>
 
 <body>
 <!--Navbar-->
-<div  th:replace="componentes :: navbar"></div>
+<div  th:replace="~{componentes :: navbar}"></div>
 <!--Fin Navbar-->
 <div class="container mt-5">
     <h2 class="mb-4" th:text="#{cart.your_cart}"><i class="bi bi-cart-fill me-2"></i>Tu Carrito de Compras</h2>
@@ -41,7 +41,7 @@
 </div>
 
 <!--Footer-->
-<div  th:replace="componentes :: footer"></div>
+<div  th:replace="~{componentes :: footer}"></div>
 <!--Fin Footer-->
 
 </body>

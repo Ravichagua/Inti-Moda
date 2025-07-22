@@ -1,11 +1,14 @@
 package com.intimoda.app;
 
 import com.intimoda.app.jpa.model.Producto;
+import com.intimoda.app.jpa.model.User;
+import com.intimoda.app.jpa.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.intimoda.app.jpa.repository.ProductoRepository;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 
@@ -15,11 +18,12 @@ public class Application {
 	public static void main(String[] args) {
 
 		SpringApplication.run(Application.class, args);
+		System.out.println("Recursos cargados!");
 	}
 	@Bean
-	public CommandLineRunner initData(ProductoRepository productoRepository) {
+	public CommandLineRunner initData(PasswordEncoder passwordEncoder, UserRepository userRepo, ProductoRepository productoRepository) {
 		return args -> {
-			List<Producto> productos = List.of(
+			/*List<Producto> productos = List.of(
 					new Producto(null, "Casaca Blanca", "Silla ergonómica con respaldo de malla", 149.99f, 10, "Casacas", "CasacaBlanca.png"),
 					new Producto(null, "Casaca Gris", "Escritorio con luces LED y soporte para monitor", 299.90f, 5, "Casacas", "CasacaGris.png"),
 					new Producto(null, "Casaca Jean", "Lámpara con diseño minimalista y luz cálida", 79.50f, 20, "Casacas", "CasacaJean.png"),
@@ -29,8 +33,21 @@ public class Application {
 			);
 
 			productoRepository.saveAll(productos);
-			System.out.println("Recursos cargados!");
+			*/
+			if (userRepo.findByEmail("admin@admin").isEmpty()) {
+				User admin = new User();
+				admin.setEmail("admin@admin");
+				admin.setPassword(passwordEncoder.encode("admin"));
+
+				admin.setRole("ADMIN"); // Solo texto plano
+
+				userRepo.save(admin);
+			}
+
+
+
 		};
+
 	}
 
 
